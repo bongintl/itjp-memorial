@@ -1,0 +1,117 @@
+{% if not ( siteUrl in craft.request.getUrlReferrer() ) %}
+	{% redirect siteUrl %}
+{% endif %}
+
+<div class="person__gap"></div>
+
+<div class="person__row portrait">
+    <div class="portrait__left">&nbsp;</div>
+    
+    {% set portrait = entry.portrait.first() %}
+    
+    {% if portrait %}
+        <div class="portrait__image" style="background-image: url('{{ portrait.url }}')"></div>
+    {% else %}
+        <div class="portrait__image portrait__image--missing"></div>
+    {% endif %}
+    <div class="portrait__right">&nbsp;</div>
+</div>
+
+<h2 class="person__name">
+{% include 'translate.html' with { english: entry.englishName, tamil: entry.tamilName, element: 'span' } %}
+</h2>
+
+<div class="person__description">
+    {% include 'translate.html' with { english: entry.englishDescription, tamil: entry.tamilDescription, element: 'div' } %}
+</div>
+
+<div class="person__row details">
+    <div class="details__left">&nbsp;</div>
+    <div class="details__column">
+        <h3 class="details__title">Location</h3>
+    </div>
+    <div class="details__column">
+        <h3 class="details__title details__title--right">Date of disappearance</h3>
+    </div>
+    <div class="details__right">&nbsp;</div>
+</div>
+
+<div class="person__row details">
+    <div class="details__left">&nbsp;</div>
+    <div class="details__column">
+        
+        {% set cat = entry.location %}
+        {% if cat | length %}
+            <div class="details__value">{% for item in cat %}{{ item }}{% endfor %}</div>
+        {% else %}
+            <div class="details__missing"></div>
+        {% endif %}
+        
+    </div>
+    <div class="details__column">
+        
+        
+        {% set cat = entry.date %}
+        {% if cat | length %}
+            <div class="details__value details__value--right">{% for item in cat %}{{ item }}{% endfor %}</div>
+        {% else %}
+            <div class="details__missing"></div>
+        {% endif %}
+        
+    </div>
+    <div class="details__right">&nbsp;</div>
+</div>
+
+
+<div class="person__gap--small"></div>
+
+
+<div class="person__row details">
+    <div class="details__left">&nbsp;</div>
+    <div class="details__column">
+        <h3 class="details__title">
+            Witnesses
+        </h3>
+    </div>
+    <div class="details__column">
+        <h3 class="details__title details__title--right">
+            Complaint registered
+        </h3>
+    </div>
+    <div class="details__right">&nbsp;</div>
+</div>
+
+
+
+<div class="person__row details">
+    <div class="details__left">&nbsp;</div>
+    <div class="details__column">
+        <div class="details__value">
+            {% include 'translate.html' with { english: entry.englishWitnessNames, tamil: entry.tamilWitnessNames, element: 'span' } %}
+        </div>
+    </div>
+    <div class="details__column">
+        <div class="details__value details__value--right">
+            {{ entry.complaintDate }}
+        </div>
+    </div>
+    <div class="details__right">&nbsp;</div>
+</div>
+
+    
+<div class="person__gap--large"></div>
+
+
+<div class="person__row video">
+    <div class="video__left">&nbsp;</div>
+    {% if entry.videoUrl != '' %}
+        <div class="video__image">{{ entry.videoUrl|videoEmbed }}</div>
+    {% else %}
+        <div class="video__image video__image--missing"></div>
+    {% endif %}
+
+    <div class="video__right">&nbsp;</div>
+</div>
+
+
+<div class="person__gap--large"></div>

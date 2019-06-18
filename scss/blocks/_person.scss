@@ -1,0 +1,254 @@
+$portrait_height: 10rem;
+$portrait_width: 8rem;
+
+$video_desktop_height: 25vw;
+$video_height: 45vw;
+
+
+
+$margin: 2rem;
+
+
+.person__wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: scroll;
+    background: rgba(0,0,0,0.1);
+    transition: background 1s;
+    
+    &--hidden {
+        pointer-events: none;
+        background: transparent;
+    }
+    
+    &--active {
+        visibility: visible;
+        
+        .person {
+            visibility: visible;
+            left: 10%;
+    
+            @include desktop {
+                left: 40%;
+            }
+        }
+    }
+}
+
+.person {
+    position: relative;
+    top: 8rem;
+    margin-bottom: 8rem;
+    z-index: 100;
+    @extend .outershadow;
+    width: 90%;
+    left: 10%;
+    transition: transform .3s;
+
+    .person__wrap--hidden & {
+        transform: translateX(110%);
+    }
+    
+    @include desktop {
+        width: 60%;
+        left: 40%;
+        font-size: 1.35rem;
+    }
+    
+  
+    
+    &__row  {
+        content: "";
+        clear: both;
+        overflow: auto;
+        
+        div {
+            float: left;
+        }
+    }
+    
+    &__gap {
+        height: $margin; 
+        width: 100%;
+        background: white;
+        display: block;
+        
+        &--small {
+            background: white;
+            height: $margin / 2;
+        }
+        
+        &--large {
+            background: white;
+            height: $margin * 2;
+        }
+    }
+    
+
+    
+    &__name, &__description {
+        padding: $margin $margin 0 $margin;
+        background: white;
+    }
+    
+    
+    
+    &__description {
+        padding-bottom: 4rem;
+        @include desktop {
+            padding-bottom: 6rem;
+        }
+        
+        p {
+            width: 100%;
+
+            @include desktop {
+                width: 85%;
+            }
+        }   
+    }
+  
+}
+
+
+
+.portrait {
+    &__left {
+        width: $margin;
+        height: $portrait_height;
+        background: white;
+    }
+    
+    &__image {
+        height: $portrait_height;
+        width: $portrait_width;
+        background-size: cover;
+        
+        
+        &--missing {
+            @extend .innershadow;
+        }
+    }
+    
+    &__right {
+        width: calc(100% - (#{$margin} + #{$portrait_width}));
+        height: $portrait_height;
+        background: white;
+    }
+}
+
+
+
+
+.details {
+    &__left, &__right {
+        width: $margin;
+        background: white;
+        height: 2.5rem;
+        
+        @include desktop {
+            height: auto;
+        }
+    }
+    
+    &__right {
+        width: $margin;
+        @include desktop {
+            width: $margin * 3;
+        }
+    }
+    
+    &__column {
+        width: calc(50% - #{$margin});
+
+        @include desktop {
+            width: calc(50% - (#{$margin} * 2));
+        }
+    }
+    
+    &__title {
+        font-weight: normal;
+        font-size: 0.8rem;
+        padding-bottom: 0.5em;
+        height: 2.5rem;
+        background: white;
+        
+        @include desktop {
+            height: auto;
+            font-size: 1rem;
+        }
+        
+        &--right {
+            padding-left: $margin / 2;
+        }
+    }
+    
+    &__value {
+        width: 100%;
+        background: white;
+        height: 2.5rem;
+        
+        @include desktop {
+            height: auto;
+        }
+        
+        &--right {
+            padding-left: $margin / 2;
+        }
+    }
+    
+    &__missing {
+        @extend .innershadow;
+        width: 100%;
+        height: 2.5rem;
+        
+        @include desktop {
+            height: $margin;
+        }
+    }
+}
+
+.video {
+    &__left {
+        width: $margin;
+        height: $video_height;
+        background: white;
+        @include desktop {
+            height: $video_desktop_height;
+        }
+    }
+    
+    &__image {
+        height: $video_height;
+        width: 70%;
+        
+        @include desktop {
+            height: $video_desktop_height;
+        }
+        
+        &--missing {
+            @extend .innershadow;
+        }
+    }
+    
+    &__right {
+        width: calc(30% - #{$margin});
+        height: $video_height;
+        background: white;
+        
+        @include desktop {
+            height: $video_desktop_height;
+        }
+    }
+    
+    iframe {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;    
+    }
+}
+

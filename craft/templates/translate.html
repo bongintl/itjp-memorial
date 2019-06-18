@@ -1,0 +1,30 @@
+{% set english = english | default('') %}
+
+{% set hasTamil = 0 %}
+<!--{% set hasSinhala = 0 %}-->
+
+{% if tamil is defined %}
+    {% set hasTamil = 1 %}
+{% endif %}
+
+<!--{% if sinhala is defined %}-->
+<!--    {% set hasSinhala = 1 %}-->
+<!--{% endif %}-->
+
+{% set tamil = tamil | default(english) %}
+<!--{% set sinhala = sinhala | default(english) %}-->
+
+{% set element = element | default('div') %}
+{% set class = class | default('') %}
+
+<{{element}} class="translated-text translated-text_english {{class}}">
+    {{english}}
+</{{element}}>
+
+<{{element}} class="translated-text translated-text_tamil {{class}} {% if hasTamil %}translated-text_tamil-font{% endif %}">
+    {{tamil}}
+</{{element}}>
+
+<!--<{{element}} class="translated-text translated-text_sinhala {{class}} {% if hasSinhala %}translated-text_sinhala-font{% endif %}">-->
+<!--    {{sinhala}}-->
+<!--</{{element}}>-->

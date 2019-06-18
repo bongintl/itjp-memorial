@@ -1,0 +1,406 @@
+/* line 1, ../scss/globals/_reset.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* line 7, ../scss/globals/_reset.scss */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: 'GTPressura';
+  src: url("../fonts/GT-Pressura-Mono-Bold.eot");
+  src: url("../fonts/GT-Pressura-Mono-Bold.woff") format("woff"), url("../fonts/GT-Pressura-Mono-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'GTPressura';
+  src: url("../fonts/GT-Pressura-Mono-Light.eot");
+  src: url("../fonts/GT-Pressura-Mono-Light.woff") format("woff"), url("../fonts/GT-Pressura-Mono-Light.ttf") format("truetype");
+  font-weight: normal;
+}
+/* line 1, ../scss/globals/_extends.scss */
+.innershadow, .list__item--missing, .portrait__image--missing, .details__missing, .video__image--missing {
+  -webkit-box-shadow: inset 1px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 1px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 1px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* line 7, ../scss/globals/_extends.scss */
+.outershadow, .person {
+  -webkit-box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* line 1, ../scss/globals/_body.scss */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  /* line 1, ../scss/globals/_body.scss */
+  html {
+    font-size: 16px;
+  }
+}
+
+/* line 8, ../scss/globals/_body.scss */
+body {
+  background-color: #CFCFCF;
+  font-family: 'GTPressura', Andale Mono, monospace;
+  line-height: 1.5;
+}
+
+/* line 1, ../scss/globals/_translate.scss */
+.translated-text {
+  display: none;
+}
+/* line 5, ../scss/globals/_translate.scss */
+.lang_english .translated-text_english {
+  display: initial;
+}
+/* line 9, ../scss/globals/_translate.scss */
+.lang_tamil .translated-text_tamil {
+  display: initial;
+}
+/* line 13, ../scss/globals/_translate.scss */
+.lang_sinhala .translated-text_sinhala {
+  display: initial;
+}
+
+/* line 1, ../scss/blocks/_container.scss */
+.container {
+  padding: 1.5rem;
+  background: white;
+  -webkit-box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+  margin: 1.5rem 1.75rem 1.5rem 0;
+}
+@media (min-width: 768px) {
+  /* line 1, ../scss/blocks/_container.scss */
+  .container {
+    margin: 2rem 1.75rem;
+  }
+}
+
+/* line 1, ../scss/blocks/_lang.scss */
+.lang {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+/* line 5, ../scss/blocks/_lang.scss */
+.lang__select {
+  cursor: pointer;
+}
+
+/* line 1, ../scss/blocks/_intro.scss */
+.intro {
+  margin: 2rem 0 2.5rem 0;
+}
+@media (min-width: 1200px) {
+  /* line 1, ../scss/blocks/_intro.scss */
+  .intro {
+    width: 50%;
+  }
+}
+
+/* line 1, ../scss/blocks/_list.scss */
+.list {
+  margin: 2rem 0;
+  list-style: none;
+  column-count: 2;
+}
+@media (min-width: 768px) {
+  /* line 1, ../scss/blocks/_list.scss */
+  .list {
+    column-count: 4;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 1, ../scss/blocks/_list.scss */
+  .list {
+    column-count: 6;
+  }
+}
+/* line 11, ../scss/blocks/_list.scss */
+.list__item {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+/* line 15, ../scss/blocks/_list.scss */
+.list__item:hover {
+  font-weight: bold;
+}
+/* line 19, ../scss/blocks/_list.scss */
+.list__item--missing {
+  background-color: #CFCFCF;
+  cursor: default;
+}
+
+/* line 12, ../scss/blocks/_person.scss */
+.person__wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: scroll;
+  background: rgba(0, 0, 0, 0.1);
+  transition: background 1s;
+}
+/* line 22, ../scss/blocks/_person.scss */
+.person__wrap--hidden {
+  pointer-events: none;
+  background: transparent;
+}
+/* line 27, ../scss/blocks/_person.scss */
+.person__wrap--active {
+  visibility: visible;
+}
+/* line 30, ../scss/blocks/_person.scss */
+.person__wrap--active .person {
+  visibility: visible;
+  left: 10%;
+}
+@media (min-width: 1200px) {
+  /* line 30, ../scss/blocks/_person.scss */
+  .person__wrap--active .person {
+    left: 40%;
+  }
+}
+
+/* line 41, ../scss/blocks/_person.scss */
+.person {
+  position: relative;
+  top: 8rem;
+  margin-bottom: 8rem;
+  z-index: 100;
+  width: 90%;
+  left: 10%;
+  transition: transform .3s;
+}
+/* line 51, ../scss/blocks/_person.scss */
+.person__wrap--hidden .person {
+  transform: translateX(110%);
+}
+@media (min-width: 1200px) {
+  /* line 41, ../scss/blocks/_person.scss */
+  .person {
+    width: 60%;
+    left: 40%;
+    font-size: 1.35rem;
+  }
+}
+/* line 63, ../scss/blocks/_person.scss */
+.person__row {
+  content: "";
+  clear: both;
+  overflow: auto;
+}
+/* line 68, ../scss/blocks/_person.scss */
+.person__row div {
+  float: left;
+}
+/* line 73, ../scss/blocks/_person.scss */
+.person__gap {
+  height: 2rem;
+  width: 100%;
+  background: white;
+  display: block;
+}
+/* line 79, ../scss/blocks/_person.scss */
+.person__gap--small {
+  background: white;
+  height: 1rem;
+}
+/* line 84, ../scss/blocks/_person.scss */
+.person__gap--large {
+  background: white;
+  height: 4rem;
+}
+/* line 92, ../scss/blocks/_person.scss */
+.person__name, .person__description {
+  padding: 2rem 2rem 0 2rem;
+  background: white;
+}
+/* line 99, ../scss/blocks/_person.scss */
+.person__description {
+  padding-bottom: 4rem;
+}
+@media (min-width: 1200px) {
+  /* line 99, ../scss/blocks/_person.scss */
+  .person__description {
+    padding-bottom: 6rem;
+  }
+}
+/* line 105, ../scss/blocks/_person.scss */
+.person__description p {
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  /* line 105, ../scss/blocks/_person.scss */
+  .person__description p {
+    width: 85%;
+  }
+}
+
+/* line 119, ../scss/blocks/_person.scss */
+.portrait__left {
+  width: 2rem;
+  height: 10rem;
+  background: white;
+}
+/* line 125, ../scss/blocks/_person.scss */
+.portrait__image {
+  height: 10rem;
+  width: 8rem;
+  background-size: cover;
+}
+/* line 136, ../scss/blocks/_person.scss */
+.portrait__right {
+  width: calc(100% - (2rem + 8rem));
+  height: 10rem;
+  background: white;
+}
+
+/* line 147, ../scss/blocks/_person.scss */
+.details__left, .details__right {
+  width: 2rem;
+  background: white;
+  height: 2.5rem;
+}
+@media (min-width: 1200px) {
+  /* line 147, ../scss/blocks/_person.scss */
+  .details__left, .details__right {
+    height: auto;
+  }
+}
+/* line 157, ../scss/blocks/_person.scss */
+.details__right {
+  width: 2rem;
+}
+@media (min-width: 1200px) {
+  /* line 157, ../scss/blocks/_person.scss */
+  .details__right {
+    width: 6rem;
+  }
+}
+/* line 164, ../scss/blocks/_person.scss */
+.details__column {
+  width: calc(50% - 2rem);
+}
+@media (min-width: 1200px) {
+  /* line 164, ../scss/blocks/_person.scss */
+  .details__column {
+    width: calc(50% - (2rem * 2));
+  }
+}
+/* line 172, ../scss/blocks/_person.scss */
+.details__title {
+  font-weight: normal;
+  font-size: 0.8rem;
+  padding-bottom: 0.5em;
+  height: 2.5rem;
+  background: white;
+}
+@media (min-width: 1200px) {
+  /* line 172, ../scss/blocks/_person.scss */
+  .details__title {
+    height: auto;
+    font-size: 1rem;
+  }
+}
+/* line 184, ../scss/blocks/_person.scss */
+.details__title--right {
+  padding-left: 1rem;
+}
+/* line 189, ../scss/blocks/_person.scss */
+.details__value {
+  width: 100%;
+  background: white;
+  height: 2.5rem;
+}
+@media (min-width: 1200px) {
+  /* line 189, ../scss/blocks/_person.scss */
+  .details__value {
+    height: auto;
+  }
+}
+/* line 198, ../scss/blocks/_person.scss */
+.details__value--right {
+  padding-left: 1rem;
+}
+/* line 203, ../scss/blocks/_person.scss */
+.details__missing {
+  width: 100%;
+  height: 2.5rem;
+}
+@media (min-width: 1200px) {
+  /* line 203, ../scss/blocks/_person.scss */
+  .details__missing {
+    height: 2rem;
+  }
+}
+
+/* line 215, ../scss/blocks/_person.scss */
+.video__left {
+  width: 2rem;
+  height: 45vw;
+  background: white;
+}
+@media (min-width: 1200px) {
+  /* line 215, ../scss/blocks/_person.scss */
+  .video__left {
+    height: 25vw;
+  }
+}
+/* line 224, ../scss/blocks/_person.scss */
+.video__image {
+  height: 45vw;
+  width: 70%;
+}
+@media (min-width: 1200px) {
+  /* line 224, ../scss/blocks/_person.scss */
+  .video__image {
+    height: 25vw;
+  }
+}
+/* line 237, ../scss/blocks/_person.scss */
+.video__right {
+  width: calc(30% - 2rem);
+  height: 45vw;
+  background: white;
+}
+@media (min-width: 1200px) {
+  /* line 237, ../scss/blocks/_person.scss */
+  .video__right {
+    height: 25vw;
+  }
+}
+/* line 247, ../scss/blocks/_person.scss */
+.video iframe {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* line 1, ../scss/blocks/_filter.scss */
+.filter {
+  margin: 1em 0;
+}
+/* line 3, ../scss/blocks/_filter.scss */
+.filter__value {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* line 6, ../scss/blocks/_filter.scss */
+.filter__value--active {
+  text-decoration: none;
+}

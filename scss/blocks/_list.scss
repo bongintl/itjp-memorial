@@ -1,0 +1,25 @@
+.list {
+    margin: 2rem 0;
+    list-style: none;
+    column-count: 2;
+    @include tablet {
+        column-count: 4;
+    }
+    @include desktop {
+        column-count: 6;
+    }
+    &__item {
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+    
+        &:hover {
+            font-weight: bold;
+        }
+        
+        &--missing {
+            background-color: $grey;
+            cursor: default;
+            @extend .innershadow;
+        }
+    }
+}

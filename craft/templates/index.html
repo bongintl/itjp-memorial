@@ -1,0 +1,18 @@
+{% extends "_layout" %}
+{% block content %}
+
+    {% for entry in craft.entries.section('people').limit(null).orderBy('title').find() %}
+        {% set date = ( entry.date | length ) > 0 ? entry.date.first.slug : '' %}
+        {% set location = ( entry.location | length ) > 0 ? entry.location.first.slug : ''%}
+        <li
+            class="list__item"
+            data-date="{{ date }}"
+            data-location="{{ location }}"
+            data-slug="{{ entry.slug }}"
+            data-type="{{ entry.typeOfDisappearance }}"
+        >
+            {% include 'translate.html' with { english: entry.englishName, tamil: entry.tamilName, element: 'span' } %}
+        </li>
+    {% endfor %}
+    
+{% endblock %}

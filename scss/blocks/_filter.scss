@@ -1,0 +1,10 @@
+.filter {
+    margin: 1em 0;
+    &__value {
+        cursor: pointer;
+        text-decoration: underline;
+        &--active {
+            text-decoration: none;
+        }
+    }
+}

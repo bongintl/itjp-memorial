@@ -1,0 +1,17 @@
+.translated-text {
+    
+    display: none;
+    
+    .lang_english &_english {
+        display: initial;
+    }
+    
+    .lang_tamil &_tamil {
+        display: initial;
+    }
+    
+    .lang_sinhala &_sinhala {
+        display: initial;
+    }
+    
+}

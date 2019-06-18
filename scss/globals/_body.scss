@@ -1,0 +1,13 @@
+html {
+    font-size: 14px;
+    @include tablet {
+        font-size: 16px;
+    }
+}
+
+body {
+    background-color: $grey;
+    font-family: 'GTPressura', Andale Mono, monospace;
+    line-height: 1.5;
+}
+

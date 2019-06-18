@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+	<link rel="stylesheet" href="/css/main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+</head>
+
+<body class="lang_english">
+    
+    <main class="container">
+        
+		{% include 'logo.html' %}
+		
+        <div class="lang">
+          <a class="translated-text translated-text_tamil lang__select" data-lang="english">ENGLISH</a>
+          <a class="translated-text translated-text_english lang__select" data-lang="tamil">தமிழ்</a>
+          <!--<a href="#sinhala" class="lang__item lang__item--sinhala">සිංහල</a>-->
+        </div>
+        
+        <div class="intro">
+            {% set home = craft.entries.section( 'homepage' ).first %}
+            {% include 'translate.html' with { english: home.englishBody, tamil: home.tamilBody, element: 'div' } %}
+            
+            <br>
+            {% set total = craft.entries.section('people').total() %}
+       
+
+            <strong>{{ total }} DISAPPEARANCES</strong><br>
+            
+        </div>
+        
+        <div class="filter">
+            Type
+            
+             {% set missingTotal = craft.entries.section('people').typeOfDisappearance('missing').total() %}
+            {% set enforcedTotal = craft.entries.section('people').typeOfDisappearance('enforced').total() %}
+            <a class="filter__value" data-filter="all" data-filter-value="">All</a>
+            <a class="filter__value" data-filter="type:enforced">{{ enforcedTotal }} ENFORCED DISAPPEARANCE</a>, 
+            <a class="filter__value" data-filter="type:missing">{{ missingTotal }} MISSING</a>
+        </div>
+        
+        <div class="filter">
+            Dates
+                <a class="filter__value" data-filter="all" data-filter-value="">All</a>
+            {% for date in craft.categories.group('dates') %}
+                <a class="filter__value" data-filter="date:{{ date.slug }}" >{{ date.title }}</a>
+            {% endfor %}
+        </div>
+        
+        <div class="filter">
+            Locations
+                <a class="filter__value" data-filter="all">All</a>
+            {% for location in craft.categories.group('locations') %}
+                <a class="filter__value" data-filter="location:{{ location.slug }}">{{ location.title }}</a>
+            {% endfor %}
+        </div>
+        
+        <ul class="list">
+		    {% block content %}{% endblock %}
+		</ul>
+	    
+	    <div class="person__wrap person__wrap--hidden">
+	        <div class="person"></div>
+        </div>
+	
+	</main>
+    
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
